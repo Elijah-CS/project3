@@ -16,7 +16,14 @@ export function Home(props) {
           }}>
           Search/View
         </button>
-        <button>Add Expense</button>
+
+        <button
+          onClick={() => {
+            navigate(`/add/`);
+          }}>
+          Add Expense
+        </button>
+
       </div>
 
     </div>
