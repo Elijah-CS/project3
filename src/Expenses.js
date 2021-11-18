@@ -1,4 +1,5 @@
 import './Expenses.css'
+import { Row } from './Row.js';
 
 export function Expenses(props) {
   return (
@@ -14,6 +15,11 @@ export function Expenses(props) {
           <th>Date Created</th>
           <th>Date Updated</th>
         </tr>
+
+        {<Row />}
+        {<Row />}
+        {<Row />}
+        {<Row />}
       </table>
     </div>
   );
