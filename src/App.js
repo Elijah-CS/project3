@@ -18,3 +18,5 @@ function App() {
 }
 
 export default App;
+
+//scp -r build/* 137.184.74.148:project3

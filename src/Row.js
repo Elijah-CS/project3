@@ -6,7 +6,7 @@ export function Row(props) {
 
     <tr className='Row'>
       <td className='id'>
-        <button>i</button>
+        <button className='info'>i</button>
         1
       </td>
 
