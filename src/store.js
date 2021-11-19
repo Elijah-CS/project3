@@ -23,6 +23,8 @@ const initialState = {
       month: 11,
       day: 18,
       description: "Bought a movie ticket",
+      updated: '1970-1-1',
+      created: '1970-1-1',
     },
   ],
 };
