@@ -17,14 +17,8 @@ export function Row(props) {
       <td>{expense.amount}</td>
       <td>{date}</td>
       <td>{expense.description}</td>
-      <td>None</td>
-      <td>None</td>
-
-      {/* <td>19.99</td>
-      <td>1/1/1970</td>
-      <td>Bought college tuition</td>
-      <td>11/18/2021</td>
-      <td>11/18/2021</td> */}
+      <td>{expense.created}</td>
+      <td>{expense.updated}</td>
     </tr>
   );
 }
