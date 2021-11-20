@@ -3,11 +3,12 @@ export function MyInput(props) {
 
   const { type, format, setter } = props;
 
-
   if (type === 'text') {
 
     return (
-      <input className="search-box" placeholder="Leave empty to show all" onChange={event => format(event, setter)} />
+      <input type={type} className="search-box"
+      placeholder="Leave empty to show all" 
+      onChange={event => format(event, setter)} />
     );
 
   } else if (type === 'year') {

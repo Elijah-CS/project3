@@ -8,7 +8,7 @@ import { startSearching } from './actions';
 
 
 function formatQueryText(event, setter) {
-  // console.log(event.target.value);
+  console.log(event.target);
 
   let input = event.target.value;
 
