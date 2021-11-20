@@ -1,11 +1,18 @@
 
-export function MyDate(props) {
+export function MyInput(props) {
 
   const { type, format, setter } = props;
 
-  if (type === 'year') {
 
-    var arr = [...Array( new Date().getFullYear() ).keys()];
+  if (type === 'text') {
+
+    return (
+      <input className="search-box" placeholder="Leave empty to show all" onChange={event => format(event, setter)} />
+    );
+
+  } else if (type === 'year') {
+
+    var arr = [...Array(new Date().getFullYear()).keys()];
 
     return (
 
@@ -18,7 +25,6 @@ export function MyDate(props) {
   } else {
 
     return (
-
       <input type={type} className="date-search" onChange={event => format(event, setter)} />
     );
   }

@@ -1,6 +1,6 @@
 import './Expenses.css'
 import { Row } from './Row.js';
-import { MyDate } from './MyDate.js';
+import { MyInput } from './MyInput.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { startSearching } from './actions';
@@ -13,7 +13,9 @@ function formatQueryText(event, setter) {
   let input = event.target.value;
 
   if (event.target.type === 'text') {
-    //...
+    if ( event.target.value === '' ) {
+      input = 'all';
+    }
   } else if (event.target.type === 'month') {
 
     const temp = event.target.value.split(/[-]/);
@@ -35,36 +37,28 @@ function formatQueryText(event, setter) {
 
 }
 
-function formatDate(event, setter) {
 
-  setter(event.target.value);
-}
-
-let date = 'date';
+let input_type = 'date';
 
 export function Expenses(props) {
 
   const expenses = useSelector(state => state.expenses);
   const [queryText, setQueryText] = useState('');
-  const [dateType, setDateType] = useState(date);
+  const [inputType, setInputType] = useState(input_type);
   const dispatch = useDispatch();
 
   return (
     <div className='Expenses'>
       <h1>Search/View</h1>
 
-      <input className="search-box" onChange={event => formatQueryText(event, setQueryText)} />
-      <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
-        Search
-      </button>
-
-      <span className="radio" onChange={event => formatDate(event, setDateType)}>
-        <input type="radio" value="year" name="radio-date" /> By Year
-        <input type="radio" value="month" name="radio-date" /> By Month
-        <input type="radio" value="date" name="radio-date" /> By Day
+      <span className="radio" onChange={event => setInputType(event.target.value)}>
+        <label><input type="radio" value="year" name="radio-date" /> By Year </label>
+        <label><input type="radio" value="month" name="radio-date" /> By Month </label>
+        <label><input type="radio" value="date" name="radio-date" defaultChecked /> By Day </label>
+        <label><input type="radio" value="text" name="radio-date" /> By Keyword </label>
       </span>
 
-      < MyDate type={dateType} format={formatQueryText} setter={setQueryText} />
+      < MyInput type={inputType} format={formatQueryText} setter={setQueryText} />
 
       <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
         Search
