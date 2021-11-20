@@ -1,6 +1,6 @@
 import './Expenses.css'
 import { Row } from './Row.js';
-import { Date } from './Date.js';
+import { MyDate } from './MyDate.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { startSearching } from './actions';
@@ -8,7 +8,7 @@ import { startSearching } from './actions';
 
 
 function formatQueryText(event, setter) {
-  console.log(event.target.value);
+  console.log(event.target.type);
 
   let input = event.target.value;
 
@@ -24,6 +24,11 @@ function formatQueryText(event, setter) {
     const temp = event.target.value.split(/[-]/);
     input = `expenses/${temp[0]}/${temp[1]}/${temp[2]}`;
 
+  } else if (event.target.type === 'select-one') {
+
+    const temp = event.target.value;
+    input = `expenses/${temp}`;
+
   }
 
   setter(input);
@@ -32,11 +37,7 @@ function formatQueryText(event, setter) {
 
 function formatDate(event, setter) {
 
-  if (event.target.value === 'year') {
-    setter('text');
-  } else {
-    setter(event.target.value);
-  }
+  setter(event.target.value);
 }
 
 let date = 'date';
@@ -63,8 +64,7 @@ export function Expenses(props) {
       <input type="radio" value="date" name="radio-date"/> By Day
       </span>
 
-      {/* <input type="date" className="date-search" onChange={event => formatQueryText(event, setQueryText)}/> */}
-      < Date type={dateType} format={formatQueryText} setter={setQueryText} />
+      < MyDate type={dateType} format={formatQueryText} setter={setQueryText} />
 
       <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
         Search
@@ -82,10 +82,6 @@ export function Expenses(props) {
 
         {expenses.map(expense => <Row expense={expense} />)}
 
-        {/* {<Row />}
-        {<Row />}
-        {<Row />}
-        {<Row />} */}
       </table>
     </div>
   );
