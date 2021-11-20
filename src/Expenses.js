@@ -8,7 +8,7 @@ import { startSearching } from './actions';
 
 
 function formatQueryText(event, setter) {
-  console.log(event.target.type);
+  // console.log(event.target.value);
 
   let input = event.target.value;
 
@@ -32,7 +32,7 @@ function formatQueryText(event, setter) {
   }
 
   setter(input);
-  
+
 }
 
 function formatDate(event, setter) {
@@ -53,15 +53,15 @@ export function Expenses(props) {
     <div className='Expenses'>
       <h1>Search/View</h1>
 
-      <input className="searchBox" onChange={event => formatQueryText(event, setQueryText)} />
+      <input className="search-box" onChange={event => formatQueryText(event, setQueryText)} />
       <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
         Search
       </button>
 
       <span className="radio" onChange={event => formatDate(event, setDateType)}>
-      <input type="radio" value="year" name="radio-date"/> By Year
-      <input type="radio" value="month" name="radio-date"/> By Month
-      <input type="radio" value="date" name="radio-date"/> By Day
+        <input type="radio" value="year" name="radio-date" /> By Year
+        <input type="radio" value="month" name="radio-date" /> By Month
+        <input type="radio" value="date" name="radio-date" /> By Day
       </span>
 
       < MyDate type={dateType} format={formatQueryText} setter={setQueryText} />
@@ -71,16 +71,19 @@ export function Expenses(props) {
       </button>
 
       <table>
-        <tr className='ColumnHeader'>
-          <th>ID</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Date Created</th>
-          <th>Date Updated</th>
-        </tr>
+        <tbody>
+          <tr className='ColumnHeader'>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Date Created</th>
+            <th>Date Updated</th>
+          </tr>
 
-        {expenses.map(expense => <Row expense={expense} />)}
+          {expenses.map(expense => <Row expense={expense} />)}
+
+        </tbody>
 
       </table>
     </div>
