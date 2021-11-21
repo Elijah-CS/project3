@@ -1,15 +1,20 @@
+import {TextInput} from './TextInput.js';
 
 export function MyInput(props) {
 
   const { type, format, setter } = props;
 
+
   if (type === 'text') {
 
-    return (
-      <input type={type} className="search-box"
-      placeholder="Leave empty to show all" 
-      onChange={event => format(event, setter)} />
-    );
+    // return (
+    //   <input type={type} className="search-box"
+    //   placeholder="Leave empty to show all"
+    //   value=''
+    //   onChange={event => format(event, setter)} />
+    // );
+
+    return <TextInput format={format} setter={setter}/>;
 
   } else if (type === 'year') {
 
@@ -19,9 +24,9 @@ export function MyInput(props) {
 
       <select onChange={event => format(event, setter)}>
         <option>----</option>
-
         {arr.reverse().map(year => <option>{year + 1}</option>)};
       </select>
+
     );
   } else {
 
@@ -30,3 +35,4 @@ export function MyInput(props) {
     );
   }
 }
+
