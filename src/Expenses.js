@@ -13,9 +13,9 @@ function formatQueryText(event, setter) {
   let input = event.target.value;
 
   if (event.target.type === 'text') {
-    if ( event.target.value === '' ) {
-      input = 'all';
-    }
+    // if (event.target.value === '') {
+    //   input = 'all';
+    // }
   } else if (event.target.type === 'month') {
 
     const temp = event.target.value.split(/[-]/);
@@ -37,6 +37,17 @@ function formatQueryText(event, setter) {
 
 }
 
+function idea(event, setInput, setQuery) {
+
+  setInput(event.target.value);
+
+  if (event.target.value === 'text') {
+    setQuery('all');
+  } else {
+    setQuery('expenses/2016'); //Change
+  }
+}
+
 
 let input_type = 'date';
 
@@ -51,7 +62,7 @@ export function Expenses(props) {
     <div className='Expenses'>
       <h1>Search/View</h1>
 
-      <span className="radio" onChange={event => setInputType(event.target.value)}>
+      <span className="radio" onChange={event => idea(event, setInputType, setQueryText)}>
         <label><input type="radio" value="year" name="radio-date" /> By Year </label>
         <label><input type="radio" value="month" name="radio-date" /> By Month </label>
         <label><input type="radio" value="date" name="radio-date" defaultChecked /> By Day </label>

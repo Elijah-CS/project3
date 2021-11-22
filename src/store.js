@@ -16,16 +16,16 @@ function reducer(state, action) {
 
 const initialState = {
   expenses: [
-    {
-      id: 1,
-      amount: 19.99,
-      year: 2021,
-      month: 11,
-      day: 18,
-      description: "Bought a movie ticket",
-      updated: '1970-1-1',
-      created: '1970-1-1',
-    },
+    // {
+    //   id: 1,
+    //   amount: 19.99,
+    //   year: 2021,
+    //   month: 11,
+    //   day: 18,
+    //   description: "Bought a movie ticket",
+    //   updated: '1970-1-1',
+    //   created: '1970-1-1',
+    // },
   ],
 };
 

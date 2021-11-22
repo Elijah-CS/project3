@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-let text = '';
-
 function handleChange(event, setInput, format, setter) {
   setInput(event.target.value);
 
@@ -12,7 +10,7 @@ function handleChange(event, setInput, format, setter) {
 export function TextInput(props) {
   const { format, setter } = props;
 
-  const [input, setInput] = useState(text);
+  const [input, setInput] = useState('');
 
   return (
     <input type="text" className="search-box"
