@@ -12,9 +12,14 @@ function formatQueryText(event, setter) {
   let input = event.target.value;
 
   if (event.target.type === 'text') {
-    // if (event.target.value === '') {
-    //   input = 'all';
-    // }
+
+    if(event.target.value === '') {
+      input = 'all';
+    } else {
+      input = `keyword/${event.target.value}`;
+    }
+
+
   } else if (event.target.type === 'month') {
 
     const temp = event.target.value.split(/[-]/);
