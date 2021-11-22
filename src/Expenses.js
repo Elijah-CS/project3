@@ -2,9 +2,8 @@ import './Expenses.css'
 import { Row } from './Row.js';
 import { MyInput } from './MyInput.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { startSearching } from './actions';
-
+import { useState, useEffect } from 'react';
+import { startSearching, getNet } from './actions';
 
 
 function formatQueryText(event, setter) {
@@ -37,7 +36,7 @@ function formatQueryText(event, setter) {
 
 }
 
-function idea(event, setInput, setQuery) {
+function settingInput(event, setInput, setQuery) {
 
   setInput(event.target.value);
 
@@ -54,15 +53,21 @@ let input_type = 'date';
 export function Expenses(props) {
 
   const expenses = useSelector(state => state.expenses);
+  const net = useSelector(state => state.net);
   const [queryText, setQueryText] = useState('');
   const [inputType, setInputType] = useState(input_type);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getNet());
+  }, [dispatch]);
+
   return (
+
     <div className='Expenses'>
       <h1>Search/View</h1>
 
-      <span className="radio" onChange={event => idea(event, setInputType, setQueryText)}>
+      <span className="radio" onChange={event => settingInput(event, setInputType, setQueryText)}>
         <label><input type="radio" value="year" name="radio-date" /> By Year </label>
         <label><input type="radio" value="month" name="radio-date" /> By Month </label>
         <label><input type="radio" value="date" name="radio-date" defaultChecked /> By Day </label>
@@ -74,6 +79,8 @@ export function Expenses(props) {
       <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
         Search
       </button>
+
+      <label>Net Total: {net.total} </label>
 
       <table>
         <tbody>

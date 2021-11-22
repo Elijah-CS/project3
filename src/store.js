@@ -9,13 +9,18 @@ function reducer(state, action) {
         ...state,
         expenses: action.payload,
       };
+    case Action.LoadNet:
+      return {
+        ...state,
+        net: action.payload,
+      }
     default:
       return state;
   }
 }
 
 const initialState = {
-  expenses: [
+  expenses: [],
     // {
     //   id: 1,
     //   amount: 19.99,
@@ -26,6 +31,11 @@ const initialState = {
     //   updated: '1970-1-1',
     //   created: '1970-1-1',
     // },
+  // ],
+  net: [ 
+    {
+      total: 40.00
+    } 
   ],
 };
 
