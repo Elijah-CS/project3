@@ -1,0 +1,33 @@
+.Adding {
+  width: 90%;
+}
+
+.Adding-Table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.Adding-Header {
+  background: linear-gradient(rgb(141, 141, 216), blue);
+}
+
+.Adding-Header > th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 1em;
+}
+
+.Input-Row > td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  /* padding: 1em; */
+}
+
+.Input-Row > td > input {
+  background-color: #dddddd;
+  width: 98%;
+  border: none;
+  font-size: 1.5em;
+}
+

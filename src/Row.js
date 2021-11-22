@@ -20,11 +20,11 @@ export function Row(props) {
         {expense.id}
       </td>
 
-      <td>{expense.amount}</td>
-      <td>{date.toDateString()}</td>
-      <td>{expense.description}</td>
-      <td>{created.toDateString()}</td>
-      <td>{updated.toDateString()}</td>
+      <td className="Search-Row">{expense.amount}</td>
+      <td className="Search-Row">{date.toDateString()}</td>
+      <td className="Search-Row">{expense.description}</td>
+      <td className="Search-Row">{created.toDateString()}</td>
+      <td className="Search-Row">{updated.toDateString()}</td>
     </tr>
   );
 }

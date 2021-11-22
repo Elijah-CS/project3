@@ -47,9 +47,7 @@ function settingInput(event, setInput, setQuery) {
 
   if (event.target.value === 'text') {
     setQuery('all');
-  } else {
-    setQuery('expenses/2016'); //Change
-  }
+  } 
 }
 
 
@@ -87,7 +85,7 @@ export function Expenses(props) {
 
       <label>Net Total: {net.total} </label>
 
-      <table>
+      <table className="Search-Table">
         <tbody>
           <tr className='ColumnHeader'>
             <th>ID</th>

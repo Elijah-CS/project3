@@ -13,3 +13,8 @@
   font-weight: bold;
 }
 
+.Search-Row {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 1em;
+}
