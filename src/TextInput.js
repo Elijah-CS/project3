@@ -1,32 +1,23 @@
-import React, { Component } from "react";
+import { useState } from 'react';
 
-class TextInput extends Component {
+let text = '';
 
-  constructor(props) {
-    super(props);
+function handleChange(event, setInput, format, setter) {
+  setInput(event.target.value);
 
-    this.state = {
-      value: ''
-    };
+  format(event, setter);
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-
-    this.props.format(event, this.props.setter);
-
-  }
-
-  render() {
-    return (
-      <input type="text" className="search-box"
-        placeholder="Leave empty to show all"
-        value={this.state.value}
-        onChange={event => this.handleChange(event)} />
-    );
-  }
 }
 
-export {TextInput}
+export function TextInput(props) {
+  const { format, setter } = props;
+
+  const [input, setInput] = useState(text);
+
+  return (
+    <input type="text" className="search-box"
+      placeholder="Leave empty to show all"
+      value={input}
+      onChange={event => handleChange(event, setInput, format, setter)} />
+  );
+}
