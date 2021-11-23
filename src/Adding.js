@@ -1,12 +1,16 @@
 import './Adding.css'
-// import { useState } from 'react';
 import CurrencyInput from 'react-currency-input-field';
+import { newExpense } from './actions';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-// let amt = '0.00';
 
 export function Adding(props) {
 
-  // const [amount, setAmount] = useState(amt);
+  const [amount, setAmount] = useState('');
+  const [date, setDate] = useState('');
+  const [description, setDescription] = useState('');
+  const dispatch = useDispatch();
 
   return (
 
@@ -22,20 +26,16 @@ export function Adding(props) {
           </tr>
 
           <tr className='Input-Row'>
-            {/* <td><input 
-              type="number" 
-              step=".01" 
-              pattern="[0-9]{3}"/></td> */}
-            <td><CurrencyInput /></td>
-            <td><input type="date" /></td>
-            <td><input /></td>
+            <td><CurrencyInput value={amount} onChange={event => setAmount(event.target.value)} /></td>
+            <td><input type="date" value={date} onChange={event => setDate(event.target.value)} /></td>
+            <td><input value={description} onChange={event => setDescription(event.target.value)} /></td>
           </tr>
 
         </tbody>
 
       </table>
 
-      <button>Submit</button>
+      <button onClick={() => dispatch(newExpense({amount}, {date}, {description} ))}>Submit</button>
     </div>
   );
 }

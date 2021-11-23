@@ -14,6 +14,11 @@ function reducer(state, action) {
         ...state,
         net: action.payload,
       }
+    case Action.AddExpense:
+      return {
+        ...state,
+        expenses: [action.payload, ...state.expenses],
+      };
     default:
       return state;
   }

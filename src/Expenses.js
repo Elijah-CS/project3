@@ -63,6 +63,7 @@ export function Expenses(props) {
 
   useEffect(() => {
     dispatch(getNet());
+    dispatch(startSearching('id/0')); // so that it is empty at startup
   }, [dispatch]);
 
   return (
