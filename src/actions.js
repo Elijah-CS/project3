@@ -30,6 +30,14 @@ export function getNet() {
   };
 }
 
+export function clear() {
+  return dispatch => {
+
+    dispatch( clearState() );
+  };
+}
+
+
 export function newExpense(amount, date, description) {
 
   const temp = date.date.split(/[-]/);
@@ -72,6 +80,7 @@ export const Action = Object.freeze({
   LoadExpenses: 'LoadExpenses',
   LoadNet: 'LoadNet',
   AddExpense: 'AddExpense',
+  ClearState: 'ClearState',
 });
 
 export function loadExpenses(expenses) {
@@ -84,4 +93,8 @@ export function loadNet(net) {
 
 export function addExpense(expense) {
   return { type: Action.AddExpense, payload: expense };
+}
+
+export function clearState() {
+  return { type: Action.ClearState };
 }

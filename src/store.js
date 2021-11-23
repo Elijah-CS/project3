@@ -17,7 +17,12 @@ function reducer(state, action) {
     case Action.AddExpense:
       return {
         ...state,
-        expenses: [action.payload, ...state.expenses],
+        expenses: [],
+      };
+    case Action.ClearState:
+      return {
+        ...state,
+        expenses: [],
       };
     default:
       return state;

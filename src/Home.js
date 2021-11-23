@@ -1,9 +1,19 @@
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clear } from './actions';
+import { useEffect } from 'react';
 
 export function Home(props) {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  // dispatch( clear() );
+
+  useEffect(() => {
+    dispatch(clear());
+  }, [dispatch]);
 
   return (
     <div className="Home">
