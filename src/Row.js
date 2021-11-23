@@ -1,4 +1,6 @@
 import './Row.css'
+import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 
 export function Row(props) {
 
@@ -12,11 +14,13 @@ export function Row(props) {
   const u = expense.updated.replace('T', '-').split(/[- :]/);
   const updated = new Date(u[0], u[1] - 1, u[2]);
 
+  const navigate = useNavigate();
+
   return (
 
     <tr className='Row'>
       <td className="Search-Row" id='id'>
-        <button className='info'>{expense.id}</button>
+        <button className='info' onClick={() => navigate(`/update/${expense.id}`)}>{expense.id}</button>
       </td>
 
       <td className="Search-Row">{expense.amount}</td>

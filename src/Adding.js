@@ -1,5 +1,5 @@
+import './table.css'
 import './Adding.css'
-import CurrencyInput from 'react-currency-input-field';
 import { newExpense } from './actions';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -14,19 +14,19 @@ export function Adding(props) {
 
   return (
 
-    <div className="Adding">
+    <div className="Component">
       <h1>Add an Expense</h1>
 
       <table className="Adding-Table">
         <tbody>
-          <tr className='Adding-Header'>
+          <tr className='ColumnHeader'>
             <th>Amount</th>
             <th>Date</th>
             <th>Description</th>
           </tr>
 
           <tr className='Input-Row'>
-            <td><CurrencyInput value={amount} onChange={event => setAmount(event.target.value)} /></td>
+            <td><input type="number" value={amount} onChange={event => setAmount(event.target.value)} /></td>
             <td><input type="date" value={date} onChange={event => setDate(event.target.value)} /></td>
             <td><input value={description} onChange={event => setDescription(event.target.value)} /></td>
           </tr>

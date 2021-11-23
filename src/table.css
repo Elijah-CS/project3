@@ -1,8 +1,8 @@
-.Expenses {
+.Component {
   width: 90%;
 }
 
-.Search-Table {
+table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;

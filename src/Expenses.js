@@ -1,4 +1,5 @@
-import './Expenses.css'
+// import './Expenses.css'
+import './table.css'
 import { Row } from './Row.js';
 import { MyInput } from './MyInput.js';
 import { useSelector, useDispatch } from 'react-redux';
@@ -67,7 +68,7 @@ export function Expenses(props) {
 
   return (
 
-    <div className='Expenses'>
+    <div className='Component'>
       <h1>Search/View</h1>
 
       <span className="radio" onChange={event => settingInput(event, setInputType, setQueryText)}>
