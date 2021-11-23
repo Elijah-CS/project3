@@ -1,5 +1,5 @@
-.id {
-  width: 8%;
+#id {
+  text-align: center;
 }
 
 .info {
@@ -9,8 +9,10 @@
   width: 2em;
   height: 2em;
   
-  margin-right: 2em;
+  /* margin-right: 2em; */
   font-weight: bold;
+
+  align-self: center;
 }
 
 .Search-Row {

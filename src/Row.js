@@ -15,9 +15,8 @@ export function Row(props) {
   return (
 
     <tr className='Row'>
-      <td className='id'>
-        <button className='info'>i</button>
-        {expense.id}
+      <td className="Search-Row" id='id'>
+        <button className='info'>{expense.id}</button>
       </td>
 
       <td className="Search-Row">{expense.amount}</td>
