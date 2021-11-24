@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export function Adding(props) {
 
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState('0.00');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();

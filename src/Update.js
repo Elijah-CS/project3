@@ -3,22 +3,35 @@ import './Adding.css'
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { startSearching } from './actions';
+import { getID } from './actions';
 
 export function Update(props) {
 
   const params = useParams();
-  console.log(params);
-
-  const expenses = useSelector(state => state.expenses);
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch( startSearching(`id/${params.id}`) );
+    dispatch( getID( params.id ) );
+
   }, [dispatch, params]);
 
-  console.log(expenses);
+
+  const data = useSelector(state => state.expense);
+
+  console.log(data);
+
+  var amount = '';
+  var date = '';
+  var description = '';
+
+  if (Object.keys(data).length > 0) {
+    amount = data.amount;
+    date = new Date(data.year, data.month - 1, data.day);
+    date = date.toISOString().substr(0, 10);
+    description = data.description;
+  }
+
+  console.log(amount);
 
   return (
     <div className='Component'>
@@ -34,10 +47,10 @@ export function Update(props) {
           </tr>
 
           <tr className='Input-Row'>
-            <td>{params.id}</td>
-            <td><input type="number" /></td>
-            <td><input type="date" /></td>
-            <td><input /></td>
+            <td>{data.id}</td>
+            <td><input type="number" defaultValue={amount}/></td>
+            <td><input type="date" defaultValue={date}/></td>
+            <td><input defaultValue={description}/></td>
           </tr>
 
         </tbody>

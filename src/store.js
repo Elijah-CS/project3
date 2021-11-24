@@ -24,6 +24,11 @@ function reducer(state, action) {
         ...state,
         expenses: [],
       };
+    case Action.LoadID:
+      return {
+        ...state,
+        expense: action.payload[0],
+      };
     default:
       return state;
   }
@@ -47,6 +52,7 @@ const initialState = {
       total: 40.00
     } 
   ],
+  expense: [],
 };
 
 export const store = createStore(reducer, initialState, applyMiddleware(thunk));

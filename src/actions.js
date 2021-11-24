@@ -50,8 +50,6 @@ export function newExpense(amount, date, description) {
     description: description.description,
   };
 
-  console.log(expense);
-
   return dispatch => {
 
     const options = {
@@ -76,11 +74,24 @@ export function newExpense(amount, date, description) {
   };
 }
 
+export function getID(id) {
+  return dispatch => {
+
+    fetch(`https://project2.rickoes.me:8443/id/${id}`)
+      .then(assertResponse)
+      .then(response => response.json())
+      .then(data => {
+        dispatch(loadID(data.results));
+      });
+  };
+}
+
 export const Action = Object.freeze({
   LoadExpenses: 'LoadExpenses',
   LoadNet: 'LoadNet',
   AddExpense: 'AddExpense',
   ClearState: 'ClearState',
+  LoadID: 'LoadID',
 });
 
 export function loadExpenses(expenses) {
@@ -97,4 +108,8 @@ export function addExpense(expense) {
 
 export function clearState() {
   return { type: Action.ClearState };
+}
+
+export function loadID(expense) {
+  return { type: Action.LoadID, payload: expense };
 }
