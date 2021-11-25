@@ -64,7 +64,7 @@ export function Expenses(props) {
 
   useEffect(() => {
     dispatch(getNet());
-  }, [dispatch]);
+  }, [dispatch],);
 
   return (
 

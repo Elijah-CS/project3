@@ -111,14 +111,14 @@ export function updateExpense(id, amount, date, description) {
     fetch(`https://project2.rickoes.me:8443/expenses/${id}`, options)
       .then(assertResponse)
       .then(response => response.json())
-      // .then(data => {
-      //   if (data.ok) {
-      //     dispatch(addExpense({
-      //       ...expense,
-      //       expense: data.results,
-      //     }));
-      //   }
-      // });
+      .then(data => {
+        if (data.ok) {
+          dispatch(addExpense({
+            ...expense,
+            id: id,
+          }));
+        }
+      });
   };
 }
 
@@ -161,6 +161,7 @@ export function loadNet(net) {
 }
 
 export function addExpense(expense) {
+  console.log(expense);
   return { type: Action.AddExpense, payload: expense };
 }
 

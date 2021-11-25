@@ -17,7 +17,7 @@ function reducer(state, action) {
     case Action.AddExpense:
       return {
         ...state,
-        expenses: [],
+        expenses: [action.payload, ...state.expenses],
       };
     case Action.ClearState:
       return {
