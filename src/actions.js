@@ -86,6 +86,64 @@ export function getID(id) {
   };
 }
 
+export function updateExpense(id, amount, date, description) {
+
+  const temp = date.date.split(/[-]/);
+
+  const expense = {
+    amount: parseFloat(amount.amount),
+    year: parseInt(temp[0]),
+    month: parseInt(temp[1]),
+    day: parseInt(temp[2]),
+    description: description.description,
+  };
+
+  return dispatch => {
+
+    const options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(expense),
+    };
+
+    fetch(`https://project2.rickoes.me:8443/expenses/${id}`, options)
+      .then(assertResponse)
+      .then(response => response.json())
+      // .then(data => {
+      //   if (data.ok) {
+      //     dispatch(addExpense({
+      //       ...expense,
+      //       expense: data.results,
+      //     }));
+      //   }
+      // });
+  };
+}
+
+export function deleteExpense(id) {
+
+  return dispatch => {
+
+    const options = {
+      method: 'DELETE',
+    };
+
+    fetch(`https://project2.rickoes.me:8443/expenses/${id}`, options)
+      .then(assertResponse)
+      .then(response => response.json())
+    // .then(data => {
+    //   if (data.ok) {
+    //     dispatch(addExpense({
+    //       ...expense,
+    //       expense: data.results,
+    //     }));
+    //   }
+    // });
+  };
+}
+
 export const Action = Object.freeze({
   LoadExpenses: 'LoadExpenses',
   LoadNet: 'LoadNet',

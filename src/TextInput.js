@@ -14,7 +14,7 @@ export function TextInput(props) {
 
   return (
     <input type="text" className="search-box"
-      placeholder="Leave empty to show all"
+      placeholder="Leave blank to show all"
       value={input}
       onChange={event => handleChange(event, setInput, format, setter)} />
   );

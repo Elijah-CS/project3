@@ -3,7 +3,7 @@ import './Adding.css'
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getID } from './actions';
+import { getID, updateExpense, deleteExpense } from './actions';
 
 export function Update(props) {
 
@@ -60,8 +60,17 @@ export function Update(props) {
 
       </table>
 
-      <button>Update</button>
-      <button>Delete</button>
+      <button onClick={() => {
+        dispatch(updateExpense( data.id, {amount}, {date}, {description} ));
+      }}>Update</button>
+
+      <button onClick={() => {
+        dispatch(deleteExpense( data.id ))
+        setAmount('')
+        setDate('')
+        setDescription('')
+
+      }}>Delete</button>
     </div>
   );
 }
