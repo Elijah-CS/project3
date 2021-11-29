@@ -33,7 +33,7 @@ export function getNet() {
 export function clear() {
   return dispatch => {
 
-    dispatch( clearState() );
+    dispatch(clearState());
   };
 }
 
@@ -120,7 +120,7 @@ export function updateExpense(id, amount, date, description, created) {
       .then(response => response.json())
       .then(data => {
         if (data.ok) {
-          dispatch(addExpense({
+          dispatch(updateID({
             ...expense,
             id: id,
           }));
@@ -140,14 +140,11 @@ export function deleteExpense(id) {
     fetch(`https://project2.rickoes.me:8443/expenses/${id}`, options)
       .then(assertResponse)
       .then(response => response.json())
-    // .then(data => {
-    //   if (data.ok) {
-    //     dispatch(addExpense({
-    //       ...expense,
-    //       expense: data.results,
-    //     }));
-    //   }
-    // });
+      .then(data => {
+        if (data.ok) {
+          dispatch(deleteID(id));
+        }
+      });
   };
 }
 
@@ -157,6 +154,8 @@ export const Action = Object.freeze({
   AddExpense: 'AddExpense',
   ClearState: 'ClearState',
   LoadID: 'LoadID',
+  DeleteID: 'DeleteID',
+  UpdateID: 'UpdateID',
 });
 
 export function loadExpenses(expenses) {
@@ -178,4 +177,12 @@ export function clearState() {
 
 export function loadID(expense) {
   return { type: Action.LoadID, payload: expense };
+}
+
+export function deleteID(id) {
+  return { type: Action.DeleteID, payload: id };
+}
+
+export function updateID(id) {
+  return { type: Action.UpdateID, payload: id };
 }

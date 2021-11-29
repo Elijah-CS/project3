@@ -29,6 +29,25 @@ function reducer(state, action) {
         ...state,
         expense: action.payload[0],
       };
+    case Action.DeleteID:
+      return {
+        ...state,
+        expenses: state.expenses.filter(item => item.id !== action.payload),
+      };
+    case Action.UpdateID:
+      return {
+        ...state,
+        // expenses: state.expenses.filter(item => item.id !== action.payload.id),
+        // expenses: [action.payload, ...state.expenses],
+
+        expenses: state.expenses.map( item => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return item;
+          }
+        })
+      };
     default:
       return state;
   }
