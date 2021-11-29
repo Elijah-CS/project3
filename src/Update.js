@@ -61,7 +61,7 @@ export function Update(props) {
       </table>
 
       <button onClick={() => {
-        dispatch(updateExpense( data.id, {amount}, {date}, {description} ));
+        dispatch(updateExpense( data.id, {amount}, {date}, {description}, data.created_at ));
       }}>Update</button>
 
       <button onClick={() => {

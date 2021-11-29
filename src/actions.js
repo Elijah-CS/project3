@@ -86,9 +86,12 @@ export function getID(id) {
   };
 }
 
-export function updateExpense(id, amount, date, description) {
+export function updateExpense(id, amount, date, description, created) {
 
   const temp = date.date.split(/[-]/);
+
+  var today = new Date();
+  today.setDate(today.getDate() - 1);
 
   const expense = {
     amount: parseFloat(amount.amount),
@@ -96,7 +99,11 @@ export function updateExpense(id, amount, date, description) {
     month: parseInt(temp[1]),
     day: parseInt(temp[2]),
     description: description.description,
+    created_at: created,
+    updated_at: today.toISOString().slice(0, 19),
   };
+
+  console.log(expense);
 
   return dispatch => {
 
