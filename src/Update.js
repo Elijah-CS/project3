@@ -1,6 +1,6 @@
 import './table.css'
 import './Adding.css'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getID, updateExpense, deleteExpense } from './actions';
@@ -8,6 +8,7 @@ import { getID, updateExpense, deleteExpense } from './actions';
 export function Update(props) {
 
   const params = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [amount, setAmount] = useState('');
@@ -38,7 +39,16 @@ export function Update(props) {
 
   return (
     <div className='Component'>
-      <h1>Update Expense</h1>
+      <div className="Header">
+        <button className="back" onClick={() => {
+          navigate(`/expenses`);
+        }}>
+          &#8676;
+        </button>
+        <h1>Update Expense</h1>
+        <button className="back" id="extra">&#8676;</button>
+
+      </div>
 
       <table className="Update-Table">
         <tbody>

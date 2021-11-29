@@ -3,6 +3,7 @@ import './Adding.css'
 import { newExpense } from './actions';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export function Adding(props) {
@@ -11,11 +12,21 @@ export function Adding(props) {
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
 
     <div className="Component">
-      <h1>Add an Expense</h1>
+      <div className="Header">
+        <button className="back" onClick={() => {
+          navigate(`/`);
+        }}>
+          &#8676;
+        </button>
+        <h1>Add an Expense</h1>
+        <button className="back" id="extra">&#8676;</button>
+
+      </div>
 
       <table className="Adding-Table">
         <tbody>

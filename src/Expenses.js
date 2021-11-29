@@ -1,9 +1,9 @@
-// import './Expenses.css'
 import './table.css'
 import { Row } from './Row.js';
 import { MyInput } from './MyInput.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { startSearching, getNet } from './actions';
 
 
@@ -14,7 +14,7 @@ function formatQueryText(event, setter) {
 
   if (event.target.type === 'text') {
 
-    if(event.target.value === '') {
+    if (event.target.value === '') {
       input = 'all';
     } else {
       input = `keyword/${event.target.value}`;
@@ -48,7 +48,7 @@ function settingInput(event, setInput, setQuery) {
 
   if (event.target.value === 'text') {
     setQuery('all');
-  } 
+  }
 }
 
 
@@ -61,15 +61,26 @@ export function Expenses(props) {
   const [queryText, setQueryText] = useState('');
   const [inputType, setInputType] = useState(input_type);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getNet());
-  }, [dispatch],);
+  }, [dispatch]);
 
   return (
 
     <div className='Component'>
-      <h1>Search/View</h1>
+
+      <div className="Header">
+        <button className="back" onClick={() => {
+          navigate(`/`);
+        }}>
+          &#8676;
+        </button>
+        <h1>Search/View</h1>
+        <button className="back" id="extra">&#8676;</button>
+
+      </div>
 
       <span className="radio" onChange={event => settingInput(event, setInputType, setQueryText)}>
         <label><input type="radio" value="year" name="radio-date" /> By Year </label>
