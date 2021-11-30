@@ -37,7 +37,7 @@ export function Adding(props) {
           </tr>
 
           <tr className='Input-Row'>
-            <td><input type="number" value={amount} onChange={event => setAmount(event.target.value)} /></td>
+            <td><input type="number" value={amount} step='0.01' onChange={event => setAmount(event.target.value)} /></td>
             <td><input type="date" value={date} onChange={event => setDate(event.target.value)} /></td>
             <td><input value={description} onChange={event => setDescription(event.target.value)} /></td>
           </tr>

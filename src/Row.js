@@ -25,7 +25,7 @@ export function Row(props) {
         <button className='info' onClick={() => navigate(`/update/${expense.id}`)}>{expense.id}</button>
       </td>
 
-      <td className="Search-Row">{expense.amount}</td>
+      <td className="Search-Row">{Number(expense.amount).toFixed(2)}</td>
       <td className="Search-Row">{date.toDateString()}</td>
       <td className="Search-Row">{expense.description}</td>
       <td className="Search-Row">{created.toDateString()}</td>
