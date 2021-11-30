@@ -80,19 +80,21 @@ export function Update(props) {
 
       {data !== undefined && (
 
-        <div>
-          <button onClick={() => {
-            dispatch(updateExpense(data.id, { amount }, { date }, { description }, data.created_at))
-          }}>Update</button>
+        <div className="flex-container">
+          <div className="grid">
+            <button className="Submit" onClick={() => {
+              dispatch(updateExpense(data.id, { amount }, { date }, { description }, data.created_at))
+            }}>Update</button>
 
-          <button onClick={() => {
-            dispatch(deleteExpense(data.id))
-            setAmount('')
-            setDate('')
-            setDescription('')
-            dispatch(getID('-1'))
+            <button className="Submit" onClick={() => {
+              dispatch(deleteExpense(data.id))
+              setAmount('')
+              setDate('')
+              setDescription('')
+              dispatch(getID('-1'))
 
-          }}>Delete</button>
+            }}>Delete</button>
+          </div>
         </div>
 
       )}

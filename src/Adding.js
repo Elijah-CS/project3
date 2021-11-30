@@ -46,7 +46,7 @@ export function Adding(props) {
 
       </table>
 
-      <button onClick={ () => {
+      <button className="Submit" onClick={ () => {
         dispatch(newExpense({amount}, {date}, {description} )) 
         setAmount('')
         setDate('')

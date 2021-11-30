@@ -5,3 +5,20 @@
   font-size: 1.5em;
 }
 
+.Submit {
+  font-size: 1.3em;
+  margin: 1em;
+  padding: .5em;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+  border-radius: 20px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
