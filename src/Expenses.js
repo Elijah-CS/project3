@@ -44,10 +44,14 @@ function formatQueryText(event, setter) {
 
 function settingInput(event, setInput, setQuery) {
 
-  setInput(event.target.value);
+  if (event.target.type === 'radio') {
 
-  if (event.target.value === 'text') {
-    setQuery('all');
+    setInput(event.target.value);
+
+    if (event.target.value === 'text') {
+      setQuery('all');
+    }
+    
   }
 }
 
