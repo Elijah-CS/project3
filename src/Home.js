@@ -7,9 +7,7 @@ import { useEffect } from 'react';
 export function Home(props) {
 
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  // dispatch( clear() );
 
   useEffect(() => {
     dispatch(clear());
@@ -20,20 +18,13 @@ export function Home(props) {
       <h1>Expenses</h1>
 
       <div className='Buttons'>
-        <button
-          onClick={() => {
-            navigate(`/expenses/`);
-          }}>
+        <button onClick={() => { navigate(`/expenses/`) }}>
           Search/View
         </button>
 
-        <button
-          onClick={() => {
-            navigate(`/add/`);
-          }}>
+        <button onClick={() => { navigate(`/add/`) }}>
           Add Expense
         </button>
-
       </div>
 
     </div>

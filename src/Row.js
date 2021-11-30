@@ -6,8 +6,6 @@ export function Row(props) {
 
   const {expense} = props;
 
-  // console.log(expense);
-
   const date = new Date(expense.year, expense.month - 1, expense.day);
 
   const c = expense.created_at.replace('T', '-').split(/[- :]/);

@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 function handleChange(event, setInput, format, setter) {
   setInput(event.target.value);
-
   format(event, setter);
 
 }
