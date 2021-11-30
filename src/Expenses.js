@@ -87,15 +87,16 @@ export function Expenses(props) {
         <label><input type="radio" value="month" name="radio-date" /> By Month </label>
         <label><input type="radio" value="date" name="radio-date" defaultChecked /> By Day </label>
         <label><input type="radio" value="text" name="radio-date" /> By Keyword </label>
+        {/* </span> */}
+
+        < MyInput className="boy" type={inputType} format={formatQueryText} setter={setQueryText} />
+
+        <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
+          Search
+        </button>
+
+        <label className="Net">Net Total: {net.total} </label>
       </span>
-
-      < MyInput type={inputType} format={formatQueryText} setter={setQueryText} />
-
-      <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
-        Search
-      </button>
-
-      <label>Net Total: {net.total} </label>
 
       <table className="Search-Table">
         <tbody>

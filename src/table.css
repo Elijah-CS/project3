@@ -1,5 +1,9 @@
 .Component {
   width: 90%;
+
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
 }
 
 .Header {
@@ -60,6 +64,19 @@ tr:nth-child(even) {
   padding: 1em;
 }
 
-.radio {
+/* .radio {
   margin: 0 20px;
+} */
+
+span {
+  /* border: 1px solid black; */
+  padding-left: 2em;
+}
+
+.search {
+  margin-left: 2em;
+}
+
+.Net {
+  margin-left: 2em;
 }

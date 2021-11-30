@@ -15,7 +15,7 @@ export function MyInput(props) {
 
     return (
 
-      <select onChange={event => format(event, setter)}>
+      <select className="search" onChange={event => format(event, setter)}>
         <option>----</option>
         {arr.reverse().map(year => <option>{year + 1}</option>)};
       </select>
@@ -24,7 +24,7 @@ export function MyInput(props) {
   } else {
 
     return (
-      <input type={type} className="date-search" onChange={event => format(event, setter)} />
+      <input type={type} className="search" onChange={event => format(event, setter)} />
     );
   }
 }

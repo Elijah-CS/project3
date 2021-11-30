@@ -13,7 +13,7 @@ export function TextInput(props) {
   const [input, setInput] = useState('');
 
   return (
-    <input type="text" className="search-box"
+    <input type="text" className="search"
       placeholder="Leave blank to show all"
       value={input}
       onChange={event => handleChange(event, setInput, format, setter)} />
