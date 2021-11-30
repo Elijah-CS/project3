@@ -25,16 +25,21 @@ export function Update(props) {
 
   useEffect(() => {
     console.log(data);
-    setAmount( Number(data.amount).toFixed(2) );
-    setDescription(data.description);
 
-    if (Object.keys(data).length > 0) {
-      var date = new Date(data.year, data.month - 1, data.day);
-      date = date.toISOString().substr(0, 10);
+    if (data !== undefined) {
+      setAmount(Number(data.amount).toFixed(2));
+      setDescription(data.description);
 
-      setDate(date);
+      if (Object.keys(data).length > 0) {
+        var date = new Date(data.year, data.month - 1, data.day);
+        date = date.toISOString().substr(0, 10);
+
+        setDate(date);
+      }
     }
   }, [data])
+
+
 
 
   return (
@@ -59,28 +64,41 @@ export function Update(props) {
             <th>Description</th>
           </tr>
 
-          <tr className='Input-Row'>
-            <td>{data.id}</td>
-            <td><input type="number" defaultValue={amount} step='0.01' onChange={event => setAmount(event.target.value)}/></td>
-            <td><input type="date" defaultValue={date} onChange={event => setDate(event.target.value)}/></td>
-            <td><input defaultValue={description} onChange={event => setDescription(event.target.value)}/></td>
-          </tr>
+          {data !== undefined && (
+            <tr className='Input-Row'>
+              <td>{data.id}</td>
+              <td><input type="number" defaultValue={amount} step='0.01' onChange={event => setAmount(event.target.value)} /></td>
+              <td><input type="date" defaultValue={date} onChange={event => setDate(event.target.value)} /></td>
+              <td><input defaultValue={description} onChange={event => setDescription(event.target.value)} /></td>
+            </tr>
+
+          )}
 
         </tbody>
 
       </table>
 
-      <button onClick={() => {
-        dispatch(updateExpense( data.id, {amount}, {date}, {description}, data.created_at ));
-      }}>Update</button>
+      {data !== undefined && (
 
-      <button onClick={() => {
-        dispatch(deleteExpense( data.id ))
-        setAmount('')
-        setDate('')
-        setDescription('')
+        <div>
+          <button onClick={() => {
+            dispatch(updateExpense(data.id, { amount }, { date }, { description }, data.created_at))
+          }}>Update</button>
 
-      }}>Delete</button>
+          <button onClick={() => {
+            dispatch(deleteExpense(data.id))
+            setAmount('')
+            setDate('')
+            setDescription('')
+            dispatch(getID('-1'))
+
+          }}>Delete</button>
+        </div>
+
+      )}
+
+
+
     </div>
   );
 }
