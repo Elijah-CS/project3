@@ -8,7 +8,6 @@ import { getID, updateExpense, deleteExpense } from './actions';
 
 function handleChange(event, setter, displayMessage) {
   setter(event.target.value);
-  console.log(event.target.value);
   displayMessage(false);
 }
 

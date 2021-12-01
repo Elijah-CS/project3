@@ -109,8 +109,6 @@ export function updateExpense(id, amount, date, description, created) {
     updated_at: today.toISOString().slice(0, 19),
   };
 
-  console.log(expense);
-
   return dispatch => {
 
     const options = {

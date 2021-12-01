@@ -8,7 +8,6 @@ import { startSearching, getNet } from './actions';
 
 
 function formatQueryText(event, setter) {
-  console.log(event.target);
 
   let input = event.target.value;
 
