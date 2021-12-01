@@ -1,0 +1,37 @@
+.Header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.Header > * {
+  margin: auto;
+}
+
+h1 {
+  padding: 0.5em 0;
+}
+
+.back {
+  position: absolute;
+  border: none;
+  font-size: 4em;
+  background-color: inherit;
+
+  top: 0;
+  bottom: 0;
+  height: min-content;
+}
+
+.back:hover {
+  font-size: 4.5em;
+}
+
+.back:active {
+  font-size: 3.5em;
+  box-shadow: none;
+}
+
+#extra {
+  visibility: hidden;
+}

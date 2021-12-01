@@ -1,9 +1,9 @@
 import './table.css'
+import { Header } from './Header.js'
 import { Row } from './Row.js';
 import { MyInput } from './MyInput.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { startSearching, getNet } from './actions';
 
 
@@ -65,7 +65,6 @@ export function Expenses(props) {
   const [queryText, setQueryText] = useState('');
   const [inputType, setInputType] = useState(input_type);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getNet());
@@ -75,25 +74,15 @@ export function Expenses(props) {
 
     <div className='Component'>
 
-      <div className="Header">
-        <button className="back" onClick={() => {
-          navigate(`/`);
-        }}>
-          &#8676;
-        </button>
-        <h1>Search/View</h1>
-        <button className="back" id="extra">&#8676;</button>
-
-      </div>
+      <Header link="/" title="Search/View" />
 
       <span className="radio" onChange={event => settingInput(event, setInputType, setQueryText)}>
         <label><input type="radio" value="year" name="radio-date" /> By Year </label>
         <label><input type="radio" value="month" name="radio-date" /> By Month </label>
         <label><input type="radio" value="date" name="radio-date" defaultChecked /> By Day </label>
         <label><input type="radio" value="text" name="radio-date" /> By Keyword </label>
-        {/* </span> */}
 
-        < MyInput className="boy" type={inputType} format={formatQueryText} setter={setQueryText} />
+        < MyInput type={inputType} format={formatQueryText} setter={setQueryText} />
 
         <button className="button" onClick={() => dispatch(startSearching(queryText))}  >
           Search

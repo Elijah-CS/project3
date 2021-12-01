@@ -69,6 +69,12 @@ export function newExpense(amount, date, description) {
             ...expense,
             id: data.results,
           }));
+
+          dispatch(changeMessage("Successful"));
+
+        } else {
+          
+          dispatch(changeMessage("Invalid"));
         }
       });
   };
@@ -156,6 +162,7 @@ export const Action = Object.freeze({
   LoadID: 'LoadID',
   DeleteID: 'DeleteID',
   UpdateID: 'UpdateID',
+  ChangeMessage: 'ChangeMessage',
 });
 
 export function loadExpenses(expenses) {
@@ -185,4 +192,8 @@ export function deleteID(id) {
 
 export function updateID(id) {
   return { type: Action.UpdateID, payload: id };
+}
+
+export function changeMessage(message) {
+  return { type: Action.ChangeMessage, payload: message };
 }

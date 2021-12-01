@@ -37,8 +37,6 @@ function reducer(state, action) {
     case Action.UpdateID:
       return {
         ...state,
-        // expenses: state.expenses.filter(item => item.id !== action.payload.id),
-        // expenses: [action.payload, ...state.expenses],
 
         expenses: state.expenses.map( item => {
           if (item.id === action.payload.id) {
@@ -47,6 +45,11 @@ function reducer(state, action) {
             return item;
           }
         })
+      };
+    case Action.ChangeMessage:
+      return {
+        ...state,
+        message: action.payload,
       };
     default:
       return state;
@@ -72,6 +75,7 @@ const initialState = {
     } 
   ],
   expense: [],
+  message: '',
 };
 
 export const store = createStore(reducer, initialState, applyMiddleware(thunk));
