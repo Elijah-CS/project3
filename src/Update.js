@@ -6,6 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getID, updateExpense, deleteExpense } from './actions';
 
+function handleChange(event, setter, displayMessage) {
+  setter(event.target.value);
+  console.log(event.target.value);
+  displayMessage(false);
+}
+
 export function Update(props) {
 
   const params = useParams();
@@ -14,6 +20,7 @@ export function Update(props) {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     dispatch(getID(params.id));
@@ -40,7 +47,7 @@ export function Update(props) {
   }, [data])
 
 
-
+  const message = useSelector(state => state.message);
 
   return (
     <div className='Component'>
@@ -59,9 +66,12 @@ export function Update(props) {
           {data !== undefined && (
             <tr className='Input-Row'>
               <td>{data.id}</td>
-              <td><input type="number" defaultValue={amount} step='0.01' onChange={event => setAmount(event.target.value)} /></td>
-              <td><input type="date" defaultValue={date} onChange={event => setDate(event.target.value)} /></td>
-              <td><input defaultValue={description} onChange={event => setDescription(event.target.value)} /></td>
+
+              <td><input type="number" defaultValue={amount} step='0.01' onChange={event => handleChange(event, setAmount, setShowMessage)} /></td>
+
+              <td><input type="date" defaultValue={date} onChange={event => handleChange(event, setDate, setShowMessage)} /></td>
+
+              <td><input defaultValue={description} onChange={event => handleChange(event, setDescription, setShowMessage)} /></td>
             </tr>
 
           )}
@@ -76,6 +86,7 @@ export function Update(props) {
           <div className="grid">
             <button className="Submit" onClick={() => {
               dispatch(updateExpense(data.id, { amount }, { date }, { description }, data.created_at))
+              setShowMessage(true);
             }}>Update</button>
 
             <button className="Submit" onClick={() => {
@@ -86,6 +97,9 @@ export function Update(props) {
               dispatch(getID('-1'))
 
             }}>Delete</button>
+
+            {showMessage && (message === 'Successful') && (<p style={{ color: 'green' }}>{message}</p>)}
+            {showMessage && (message === 'Invalid') && (<p style={{ color: 'red' }}>{message}</p>)}
           </div>
         </div>
 

@@ -20,17 +20,14 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+
 }
 
 p {
   font-size: 1.3em;
   font-weight: bold;
-
-  /* margin: 1em; */
   padding: .5em;
-  /* padding-left: -2em; */
 
-  /* color: green; */
 }
 

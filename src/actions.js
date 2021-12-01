@@ -73,7 +73,7 @@ export function newExpense(amount, date, description) {
           dispatch(changeMessage("Successful"));
 
         } else {
-          
+
           dispatch(changeMessage("Invalid"));
         }
       });
@@ -130,6 +130,11 @@ export function updateExpense(id, amount, date, description, created) {
             ...expense,
             id: id,
           }));
+
+          dispatch(changeMessage("Successful"));
+
+        } else {
+          dispatch(changeMessage("Invalid"));
         }
       });
   };
