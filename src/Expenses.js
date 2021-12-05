@@ -105,7 +105,7 @@ export function Expenses(props) {
             <th>Date Updated</th>
           </tr>
 
-          {expenses.map(expense => <Row expense={expense} />)}
+          {expenses.map(expense => <Row key={expense.id} expense={expense} />)}
 
         </tbody>
 

@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { getID, updateExpense, deleteExpense } from './actions';
 
 function handleChange(event, setter, displayMessage) {
+  console.log(event.target.value);
+  
   setter(event.target.value);
   displayMessage(false);
 }
@@ -32,16 +34,15 @@ export function Update(props) {
   useEffect(() => {
     console.log(data);
 
-    if (data !== undefined) {
+    if (data !== undefined && Object.keys(data).length > 0) {
       setAmount(Number(data.amount).toFixed(2));
       setDescription(data.description);
 
-      if (Object.keys(data).length > 0) {
-        var date = new Date(data.year, data.month - 1, data.day);
-        date = date.toISOString().substr(0, 10);
+      var date = new Date(data.year, data.month - 1, data.day);
+      date = date.toISOString().substr(0, 10);
 
-        setDate(date);
-      }
+      setDate(date);
+
     }
   }, [data])
 

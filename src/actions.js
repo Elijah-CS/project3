@@ -7,6 +7,14 @@ function assertResponse(response) {
 }
 
 export function startSearching(queryText) {
+
+  if (queryText === '') {
+    return dispatch =>{
+      dispatch(showProgress());
+      dispatch(hideProgress());
+    };
+  }
+
   return dispatch => {
     dispatch(showProgress());
 
@@ -43,6 +51,10 @@ export function clear() {
 export function newExpense(amount, date, description) {
 
   const temp = date.date.split(/[-]/);
+
+  if (date.date.length === 0 || amount.amount === '') {
+    return dispatch => { dispatch(changeMessage("Invalid")) };
+  }
 
   const expense = {
     amount: parseFloat(amount.amount),
@@ -97,9 +109,13 @@ export function getID(id) {
 export function updateExpense(id, amount, date, description, created) {
 
   const temp = date.date.split(/[-]/);
-
   var today = new Date();
-  today.setDate(today.getDate() - 1);
+
+  console.log(amount.amount);
+
+  if (amount.amount === '' || date.date.length === 0) {
+    return dispatch => { dispatch(changeMessage("Invalid")) };
+  }
 
   const expense = {
     amount: parseFloat(amount.amount),
@@ -110,6 +126,7 @@ export function updateExpense(id, amount, date, description, created) {
     created_at: created,
     updated_at: today.toISOString().slice(0, 19),
   };
+
 
   return dispatch => {
 

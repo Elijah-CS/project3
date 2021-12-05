@@ -13,7 +13,7 @@ export function MyInput(props) {
       return (
         <select className="search" onChange={event => format(event, setter)}>
           <option>----</option>
-          {arr.reverse().map(year => <option>{year + 1}</option>)};
+          {arr.reverse().map(year => <option key={year + 1} >{year + 1}</option>)};
         </select>
       )
     default:
