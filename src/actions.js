@@ -8,12 +8,14 @@ function assertResponse(response) {
 
 export function startSearching(queryText) {
   return dispatch => {
+    dispatch(showProgress());
 
     fetch(`https://project2.rickoes.me:8443/${queryText}`)
       .then(assertResponse)
       .then(response => response.json())
       .then(data => {
         dispatch(loadExpenses(data.results));
+        dispatch(hideProgress());
       });
   };
 }
@@ -166,6 +168,8 @@ export const Action = Object.freeze({
   DeleteID: 'DeleteID',
   UpdateID: 'UpdateID',
   ChangeMessage: 'ChangeMessage',
+  ShowProgress: 'ShowProgress',
+  HideProgress: 'HideProgress',
 });
 
 export function loadExpenses(expenses) {
@@ -199,4 +203,12 @@ export function updateID(id) {
 
 export function changeMessage(message) {
   return { type: Action.ChangeMessage, payload: message };
+}
+
+export function showProgress() {
+  return { type: Action.ShowProgress, };
+}
+
+export function hideProgress() {
+  return { type: Action.HideProgress, };
 }

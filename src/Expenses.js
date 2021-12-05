@@ -61,6 +61,8 @@ export function Expenses(props) {
 
   const expenses = useSelector(state => state.expenses);
   const net = useSelector(state => state.net);
+  const isProgressing = useSelector(state => state.isProgressing);
+
   const [queryText, setQueryText] = useState('');
   const [inputType, setInputType] = useState(input_type);
   const dispatch = useDispatch();
@@ -74,6 +76,8 @@ export function Expenses(props) {
     <div className='Component'>
 
       <Header link="/" title="Search/View" />
+
+      {isProgressing && <div className="spinner" />}
 
       <span className="radio" onChange={event => settingInput(event, setInputType, setQueryText)}>
         <label><input type="radio" value="year" name="radio-date" /> By Year </label>

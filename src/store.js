@@ -51,6 +51,16 @@ function reducer(state, action) {
         ...state,
         message: action.payload,
       };
+    case Action.ShowProgress:
+      return {
+        ...state,
+        isProgressing: true,
+      };
+    case Action.HideProgress:
+      return {
+        ...state,
+        isProgressing: false,
+      };
     default:
       return state;
   }
@@ -61,6 +71,7 @@ const initialState = {
   net: [],
   expense: [],
   message: '',
+  isProgressing: false,
 };
 
 export const store = createStore(reducer, initialState, applyMiddleware(thunk));
