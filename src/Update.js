@@ -64,7 +64,7 @@ export function Update(props) {
           </tr>
 
           {data !== undefined && (
-            <tr className='Input-Row'>
+            <tr className='Update-Row'>
               <td>{data.id}</td>
 
               <td><input type="number" defaultValue={amount} step='0.01' onChange={event => handleChange(event, setAmount, setShowMessage)} /></td>

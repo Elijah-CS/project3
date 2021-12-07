@@ -65,7 +65,6 @@ export function Adding(props) {
         </div>
       </div>
 
-      {/* {showMessage && ( <p>{message}</p> )} */}
       
     </div>
   );
