@@ -1,8 +1,12 @@
+table > * {
+  font-size: 1.5em;
+}
+
 .Input-Row > td > input {
   background-color: #dddddd;
   width: 98%;
   border: none;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .Submit {
