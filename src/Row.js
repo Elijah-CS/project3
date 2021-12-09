@@ -1,6 +1,5 @@
 import './Row.css'
 import { useNavigate } from 'react-router-dom';
-// import { useEffect } from 'react';
 
 export function Row(props) {
 

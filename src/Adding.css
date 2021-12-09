@@ -4,16 +4,25 @@ table > * {
 
 .Input-Row > td > input {
   background-color: #dddddd;
-  width: 98%;
+  /* width: 98%; */
+  width: calc(100% - 1em);
   border: none;
   font-size: 1em;
+  padding-left: 1em;
+
+  overflow: hidden;
+  text-overflow: clip;
 }
 
-.Update-Row > td > input {
+.Update-Row > td > input, .Update-id {
   background-color: #dddddd;
-  width: 98%;
+  width: calc(100% - 1em);
   border: none;
   font-size: 1em;
+  padding-left: 0.8em;
+
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .Submit {
@@ -42,6 +51,10 @@ p {
 
 }
 
+/* .Update-id {
+  padding-left: 0.8em;
+} */
+
 
 @media 
 only screen and (max-width: 760px),
@@ -53,5 +66,16 @@ only screen and (max-width: 760px),
 	.Input-Row > td:nth-of-type(1):before { content: "Amount"; }
 	.Input-Row > td:nth-of-type(2):before { content: "Date"; }
 	.Input-Row > td:nth-of-type(3):before { content: "Description"; }
+
+
+  .Update-Row > td:nth-of-type(1):before { content: "ID"; }
+	.Update-Row > td:nth-of-type(2):before { content: "Amount"; }
+	.Update-Row > td:nth-of-type(3):before { content: "Date"; }
+	.Update-Row > td:nth-of-type(4):before { content: "Description"; }
+
+  .Update-id {
+    padding-left: calc(50% + 0.8em);
+    width: calc(50% - 0.8em);
+  }
 }
 
