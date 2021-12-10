@@ -13,7 +13,7 @@ h1 {
 }
 
 .back {
-  position: absolute;
+  /* position: absolute; */
   border: none;
   font-size: 4em;
   background-color: inherit;
@@ -27,7 +27,16 @@ h1 {
   font-size: 4.5em;
 }
 
+.back:hover ~ #extra {
+  font-size: 4.5em;
+}
+
 .back:active {
+  font-size: 3.5em;
+  box-shadow: none;
+}
+
+.back:active ~ #extra {
   font-size: 3.5em;
   box-shadow: none;
 }
